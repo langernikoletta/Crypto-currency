@@ -3,58 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto App</title>
+    <title>ForexHub — Біржа</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
-        <button onclick="switchTab('crypto')">1. Криптовалюти</button>
-        <button onclick="switchTab('fiat')">2. Курс валют</button>
-    </div>
-    <hr>
-    <div id="section-crypto">
-        <h2>Криптовалюти</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Назва</th>
-                    <th>Символ</th>
-                    <th>Ціна</th>
-                </tr>
-            </thead>
-            <tbody id="crypto-list">
-            </tbody>
-        </table>
-    </div>
+    <header class="navbar">
+        <div class="logo">📈 Forex<span>Hub</span></div>
+        <nav class="nav-links">
+            <a href="#" class="active">Біржа</a>
+            <a href="#">Про нас</a>
+            <a href="#">Новини</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="theme-btn">☀️</button>
+            <button class="login-btn">Увійти</button>
+        </div>
+    </header>
 
-    <!-- Секція 2: Курс валют -->
-    <div id="section-fiat" style="display: none;">
-        <h2>Курс валют</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Валюта</th>
-                    <th>Код</th>
-                    <th>Курс</th>
-                </tr>
-            </thead>
-            <tbody id="fiat-list">
-            </tbody>
-        </table>
-    </div>
+    <main class="hero-grid">
+        <section class="hero-info">
+            <h1>Конвертер валют та біржа</h1>
+            <p class="subtitle">Актуальні курси, швидкий обмін та зручна біржа валют у одному місці.</p>
+            
+            <div class="features">
+                <div class="feature-item">🌐 <strong>+150</strong><br><span>валют</span></div>
+                <div class="feature-item">⚡ <strong>Миттєвий</strong><br><span>обмін</span></div>
+                <div class="feature-item">🛡️ <strong>Надійно</strong><br><span>і безпечно</span></div>
+            </div>
+        </section>
+        <section class="card widget-card">
+            <div class="widget-tabs">
+                <button class="tab-btn active" data-tab="exchange">⇄ Обмін валют</button>
+                <button class="tab-btn" data-tab="market">📊 Біржа</button>
+                <button class="tab-btn" data-tab="rates">📈 Курси</button>
+            </div>
+            <div id="tab-exchange" class="tab-content active">
+                <div class="input-group">
+                    <label>Віддаєте</label>
+                    <div class="input-box">
+                        <input type="number" id="amount-from" value="100">
+                        <select id="currency-from">
+                            <option value="USD">🇺🇸 USD</option>
+                            <option value="EUR">🇪🇺 EUR</option>
+                            <option value="BTC">₿ BTC</option>
+                        </select>
+                    </div>
+                </div>
 
-    <script>
-        function switchTab(tab) {
-            const cryptoSec = document.getElementById('section-crypto');
-            const fiatSec = document.getElementById('section-fiat');
+                <div class="swap-wrapper">
+                    <button id="swap-btn" class="swap-btn">⇅</button>
+                </div>
 
-            if (tab === 'crypto') {
-                cryptoSec.style.display = 'block';
-                fiatSec.style.display = 'none';
-            } else {
-                cryptoSec.style.display = 'none';
-                fiatSec.style.display = 'block';
-            }
-        }
-    </script>
+                <div class="input-group">
+                    <label>Отримуєте</label>
+                    <div class="input-box">
+                        <input type="number" id="amount-to" value="4200.00" readonly>
+                        <select id="currency-to">
+                            <option value="UAH">🇺🇦 UAH</option>
+                            <option value="USD">🇺🇸 USD</option>
+                            <option value="EUR">🇪🇺 EUR</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="primary-btn" id="convert-btn">Обміняти</button>
+            </div>
+            <div id="tab-market" class="tab-content">
+                <h3>Криптовалюти (Біржа)</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Актив</th>
+                            <th>Ціна ($)</th>
+                            <th>24г</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crypto-market-body">
+                    </tbody>
+                </table>
+            </div>
+            <div id="tab-rates" class="tab-content">
+                <h3>Усі курси валют</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Валюта</th>
+                            <th>Купівля</th>
+                            <th>Продаж</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fiat-market-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <aside class="card sidebar-card">
+            <h3>📊 Актуальні курси</h3>
+            <ul class="rates-list">
+                <li><span>🇺🇸 USD</span> <strong>41.90</strong> <span class="up">▲ +0.12</span></li>
+                <li><span>🇪🇺 EUR</span> <strong>47.50</strong> <span class="up">▲ +0.08</span></li>
+                <li><span>🇬🇧 GBP</span> <strong>55.20</strong> <span class="down">▼ -0.10</span></li>
+                <li><span>🇵🇱 PLN</span> <strong>10.90</strong> <span class="up">▲ +0.03</span></li>
+                <li><span>₿ BTC</span> <strong>118 750</strong> <span class="up">▲ +1.25%</span></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
