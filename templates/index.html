@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto App</title>
+</head>
+<body>
+    <div>
+        <button onclick="switchTab('crypto')">1. Криптовалюти</button>
+        <button onclick="switchTab('fiat')">2. Курс валют</button>
+    </div>
+    <hr>
+    <div id="section-crypto">
+        <h2>Криптовалюти</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Символ</th>
+                    <th>Ціна</th>
+                </tr>
+            </thead>
+            <tbody id="crypto-list">
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Секція 2: Курс валют -->
+    <div id="section-fiat" style="display: none;">
+        <h2>Курс валют</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Валюта</th>
+                    <th>Код</th>
+                    <th>Курс</th>
+                </tr>
+            </thead>
+            <tbody id="fiat-list">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const cryptoSec = document.getElementById('section-crypto');
+            const fiatSec = document.getElementById('section-fiat');
+
+            if (tab === 'crypto') {
+                cryptoSec.style.display = 'block';
+                fiatSec.style.display = 'none';
+            } else {
+                cryptoSec.style.display = 'none';
+                fiatSec.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
